@@ -1,0 +1,38 @@
+-- HR Payroll Analysis Queries
+
+-- Q1: Employees with department names
+SELECT e.emp_id, e.full_name, e.job_title, d.dept_name
+FROM employees e
+JOIN departments d ON e.dept_id = d.dept_id;
+
+-- Q2: Total compensation per employee
+SELECT e.full_name,
+       s.base_salary,
+       s.bonus,
+       (s.base_salary + s.bonus) AS total_compensation
+FROM employees e
+JOIN salaries s ON e.emp_id = s.emp_id
+ORDER BY total_compensation DESC;
+
+-- Q3: Average base salary per department
+SELECT d.dept_name, ROUND(AVG(s.base_salary),2) AS avg_base_salary
+FROM departments d
+JOIN employees e ON d.dept_id = e.dept_id
+JOIN salaries s ON e.emp_id = s.emp_id
+GROUP BY d.dept_name;
+
+-- Q4: Total payroll per department
+SELECT d.dept_name, SUM(s.base_salary + s.bonus) AS dept_payroll
+FROM departments d
+JOIN employees e ON d.dept_id = e.dept_id
+JOIN salaries s ON e.emp_id = s.emp_id
+GROUP BY d.dept_name;
+
+-- Q5: Employees earning above company average salary
+SELECT e.full_name, s.base_salary
+FROM employees e
+JOIN salaries s ON e.emp_id = s.emp_id
+WHERE s.base_salary > (SELECT AVG(base_salary) FROM salaries);
+
+-- Q6: Salary category using CASE
+SELECT e.full_name,
