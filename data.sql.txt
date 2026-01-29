@@ -1,0 +1,26 @@
+-- Sample data for HR Payroll database
+
+-- Insert departments
+INSERT INTO departments (dept_id, dept_name) VALUES
+(1,'Engineering'),
+(2,'Sales'),
+(3,'HR'),
+(4,'Finance');
+
+-- Insert employees
+INSERT INTO employees (emp_id, full_name, email, hire_date, dept_id, job_title, status) VALUES
+(101,'Aarav Kumar','aarav@corp.com','2023-01-15',1,'Software Engineer','ACTIVE'),
+(102,'Meera Nair','meera@corp.com','2022-09-10',1,'Data Analyst','ACTIVE'),
+(103,'Rohan Singh','rohan@corp.com','2021-04-22',2,'Sales Executive','ACTIVE'),
+(104,'Sara Khan','sara@corp.com','2020-11-01',3,'HR Generalist','ACTIVE'),
+(105,'Vikram Patel','vikram@corp.com','2019-06-05',4,'Accountant','ACTIVE'),
+(106,'Neha Sharma','neha@corp.com','2024-02-12',2,'Sales Intern','ACTIVE');
+
+-- Insert salaries
+INSERT INTO salaries (salary_id, emp_id, base_salary, bonus, effective_from) VALUES
+(1,101,80000,5000,'2024-01-01'),
+(2,102,65000,3000,'2024-01-01'),
+(3,103,55000,7000,'2024-01-01'),
+(4,104,50000,2000,'2024-01-01'),
+(5,105,60000,2500,'2024-01-01'),
+(6,106,30000,500,'2024-01-01');
